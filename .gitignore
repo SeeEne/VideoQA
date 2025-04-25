@@ -1,7 +1,7 @@
 # ignore database files
 *.db
 # ignore all files in the data directory
-data/*
+dataset/*
 # ignore all files in the logs directory
 logs/*
 # ignore all files in the temp directory
