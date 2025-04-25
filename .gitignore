@@ -8,3 +8,5 @@ logs/*
 temp/*
 # ignore all files in the cache directory
 cache/*
+
+src/precomputed_embeddings/*
