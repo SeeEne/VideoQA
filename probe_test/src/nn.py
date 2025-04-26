@@ -17,9 +17,9 @@ class LinearProbe(nn.Module):
 
         Args:
             embedding_dim (int): The dimensionality of the input feature embeddings
-                                 (e.g., 768 for ViT-Base, 512 for CLIP ViT-Base).
+                                (e.g., 768 for ViT-Base, 512 for CLIP ViT-Base).
             num_classes (int): The number of output classes for the specific
-                               probing task (e.g., 10 for EuroSAT, 100 for CIFAR-100).
+                                probing task (e.g., 10 for EuroSAT, 100 for CIFAR-100).
         """
         super().__init__() # Initialize the parent nn.Module class
         self.embedding_dim = embedding_dim
@@ -36,11 +36,11 @@ class LinearProbe(nn.Module):
 
         Args:
             x (torch.Tensor): A batch of input embeddings with shape
-                              [batch_size, embedding_dim].
+                            [batch_size, embedding_dim].
 
         Returns:
             torch.Tensor: The output logits with shape [batch_size, num_classes].
-                          (Softmax is typically applied by the loss function, e.g., CrossEntropyLoss).
+                            (Softmax is typically applied by the loss function, e.g., CrossEntropyLoss).
         """
         # Ensure input is float32, as linear layers expect this
         if x.dtype != torch.float32:

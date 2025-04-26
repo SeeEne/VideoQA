@@ -18,3 +18,5 @@ visualization/Old/*
 visualization/embedding_visualizations/*
 
 visualization/test_images/*
+
+probe_test/dataset/*
