@@ -10,3 +10,11 @@ temp/*
 cache/*
 
 src/precomputed_embeddings/*
+
+visualization/batch_results/*
+
+visualization/Old/*
+
+visualization/embedding_visualizations/*
+
+visualization/test_images/*

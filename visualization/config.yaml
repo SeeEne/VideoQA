@@ -1,0 +1,43 @@
+# Settings related to the experiment stimuli and models
+Experiment:
+  # Base directory for stimuli. Should match BASE_OUTPUT_DIR from Module 1
+  BASE_STIMULI_DIR: "test_images/3D_shape_sweep_only"
+
+  # Identifier for the CLIP model from Hugging Face or OpenAI
+  CLIP_MODEL_ID: "google/vit-base-patch16-224"
+  VISION_MODEL_ID: "facebook/dinov2-base"
+
+  # Type of network backbone for LPIPS calculation (e.g., vgg, alex)
+  LPIPS_NET_TYPE: "vgg"
+
+  # Path to output results directory
+  OUTPUT_DIR: "results"
+
+  # ShapeSizeParams should be match with experiment data
+  ShapeSizeParams:
+    lowest_size: 0.1         # Start value for the sequence
+    highest_size: 1.25       # End value (exclusive) for the sequence generation (like np.arange)
+    interval: 0.05         # Step size between values
+    rounding_decimals: 2  # Number of decimal places to round the generated values 
+
+# Settings for running multiple experiments in batch
+BatchExperiment:
+  # Base directory where results for each batch run will be stored
+  RESULTS_BASE_DIR: "batch_results/color"
+
+  MAX_WORKERS: 8 # Number of parallel workers to use for batch processing
+
+  # List of CLIP Model IDs to test
+  CLIP_MODEL_IDs:
+    - "openai/clip-vit-base-patch32"
+    - "openai/clip-vit-large-patch14"
+    - "laion/CLIP-ViT-H-14-laion2B-s32B-b79K" 
+    - "google/siglip-so400m-patch14-384"
+    - "Salesforce/blip-image-captioning-base"
+
+
+  # List of LPIPS Network Types to test
+  LPIPS_NET_TYPEs:
+    - "alex"
+    - "vgg"
+    - "squeeze"
