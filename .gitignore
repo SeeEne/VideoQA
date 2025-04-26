@@ -8,6 +8,10 @@ logs/*
 temp/*
 # ignore all files in the cache directory
 cache/*
+# ignore all __pycache__ directories
+__pycache__/
+# ignore all .pyc files
+*.pyc
 
 visualization/batch_results/*
 visualization/Old/*
