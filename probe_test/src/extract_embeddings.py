@@ -19,10 +19,10 @@ except ImportError as e:
 
 # Import model/processor loaders
 try:
-     from transformers import AutoProcessor, AutoModel
+    from transformers import AutoProcessor, AutoModel
 except ImportError:
-     print("Error: `transformers` library not installed. Please install it.")
-     sys.exit(1)
+    print("Error: `transformers` library not installed. Please install it.")
+    sys.exit(1)
 
 # --- Argument Parsing ---
 parser = argparse.ArgumentParser(description="Extract and save vision model embeddings.")
@@ -60,7 +60,7 @@ try:
 
     # Validate essential params
     if not all([PROBING_DATASET_NAME, VISION_MODEL_ID, EMBEDDING_BASE_PATH, DATASET_PATH]):
-         raise ValueError("Missing essential config/args: DATASET_NAME, VISION_MODEL_ID, EMBEDDING_BASE_PATH, DATASET_PATH")
+        raise ValueError("Missing essential config/args: DATASET_NAME, VISION_MODEL_ID, EMBEDDING_BASE_PATH, DATASET_PATH")
 
 except Exception as e:
     print(f"Error loading/parsing configuration: {e}")
@@ -113,7 +113,7 @@ if __name__ == "__main__":
             batch_size=BATCH_SIZE,
             image_size=IMAGE_SIZE,
             is_train=False, # No augmentation for feature extraction
-            num_workers=NUM_WORKERS
+            num_workers=NUM_WORKERS,
         )
 
         if dataloader is None:
@@ -131,13 +131,14 @@ if __name__ == "__main__":
             if embeddings is not None:
                 all_embeddings.append(embeddings) # Keep embeddings on CPU
                 all_labels.append(label_batch.clone()) # Store corresponding labels
+                print(f"Finish one batch")
             else:
                 print(f"Warning: Failed to extract embedding for a batch in split '{split}'.")
 
         # 3. Concatenate and Save
         if not all_embeddings:
-             print(f"Error: No embeddings extracted for split '{split}'. Cannot save.")
-             continue
+            print(f"Error: No embeddings extracted for split '{split}'. Cannot save.")
+            continue
 
         try:
             final_embeddings = torch.cat(all_embeddings, dim=0)

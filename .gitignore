@@ -9,14 +9,11 @@ temp/*
 # ignore all files in the cache directory
 cache/*
 
-src/precomputed_embeddings/*
-
 visualization/batch_results/*
-
 visualization/Old/*
-
 visualization/embedding_visualizations/*
-
 visualization/test_images/*
 
 probe_test/dataset/*
+probe_test/embeddings/*
+probe_test/results/*

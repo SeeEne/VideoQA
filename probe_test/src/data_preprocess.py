@@ -227,7 +227,7 @@ def extract_embedding(image_batch_tensor, model, processor, device):
                         print(f"Info: Using CLS token from last_hidden_state.")
                         image_features = outputs.last_hidden_state[:, 0] # CLS token
                     else:
-                         print(f"Warning: last_hidden_state has unexpected shape: {outputs.last_hidden_state.shape}")
+                        print(f"Warning: last_hidden_state has unexpected shape: {outputs.last_hidden_state.shape}")
 
 
             # Strategy 3: Try standard forward pass and pooler_output

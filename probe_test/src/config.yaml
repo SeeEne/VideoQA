@@ -4,25 +4,25 @@
 ProbeTraining:
   # --- Shared ---
   PROBING_DATASET_NAME: "EuroSAT"
-  VISION_MODEL_ID: "facebook/dinov2-base" # Model for both extraction & probing ID
+  VISION_MODEL_ID: "openai/clip-vit-base-patch16" # Vision model ID (e.g., CLIP, ResNet)
   # Base path where <EMBEDDING_BASE_PATH>/<MODEL_ID_safe>/ embeddings are stored/saved
   EMBEDDING_BASE_PATH: "../embeddings/precomputed_embeddings_euroSAT" # Base path for embeddings
 
   # --- For Embedding Extraction (extract_embeddings.py) ---
   DATASET_PATH: "../dataset/EuroSAT" # Path to ImageFolder root (needs train/val subdirs)
   IMAGE_SIZE: 224             # Input image size for vision model
-  EXTRACTION_BATCH_SIZE: 64   # Batch size for running vision model (adjust based on VRAM)
-  EXTRACTION_NUM_WORKERS: 4   # Workers for loading images during extraction
+  BATCH_SIZE: 1024   # Batch size for running vision model (adjust based on VRAM)
+  NUM_WORKERS: 4   # Workers for loading images during extraction
 
   # --- For Probe Training (main.py) ---
   # EMBEDDING_DIM: # Removed - Determined from loaded embeddings
   # NUM_CLASSES:   # Removed - Determined from loaded labels/dataset
   PROBE_TYPE: "linear"
-  EPOCHS: 25
-  PROBE_BATCH_SIZE: 128 # Can often be larger than extraction batch size
+  EPOCHS: 1000
+  PROBE_BATCH_SIZE: 4096 # Can often be larger than extraction batch size
   LEARNING_RATE: 0.001
   OPTIMIZER: "Adam"
-  PROBE_NUM_WORKERS: 4 # Workers for loading embeddings (often 0 is fine)
+  PROBE_NUM_WORKERS: 0 # Workers for loading embeddings (often 0 is fine)
   OUTPUT_DIR_PROBE_BASE: "../results/probe_results_euroSAT" # Base directory for saving probe results
 
 # --- Optional: Add Experiment or other sections if needed by data_preprocess ---
